@@ -1,0 +1,473 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Header
+\documentclass[11pt]{report}
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{fullpage}
+\usepackage{nicefrac}
+\usepackage[lastexercise]{exercise}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{amsmath}
+\usepackage{enumitem}
+
+
+\usepackage{minted}
+\makeatletter
+\AtBeginEnvironment{minted}{\dontdofcolorbox}
+\def\dontdofcolorbox{\renewcommand\fcolorbox[4][]{##4}}
+\makeatother
+
+
+\setlength{\parindent}{0cm}
+
+\renewcommand{\ExerciseHeader}{\large\textbf{\ExerciseName~\ExerciseHeaderNB} - \textbf{\ExerciseTitle}\medskip}
+
+\renewcommand{\ExePartHeader}{\medskip\textbf{\ExePartName\ExePartHeaderNB\ExePartHeaderTitle\medskip}}
+
+\begin{document}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection*{EMAT10007 -- Introduction to Computer Programming}
+\subsection*{\Large Exercises -- Week 3. Loops and Data Structures}
+
+\subsection*{\Large Part 1. Loops}
+To complete this week's exercises you will also need to download the {\tt HowManySquares.py} file from Blackboard.
+
+\begin{Exercise}[title=For Loops (Essential)]
+  
+	``For'' loops are typically used when you know how many times you need to repeat something, before ending the loop. You specify a limit to the number of loops you wish to run the code for, and then the loop will automatically stop.
+% 	\Question{\label{Q:loopstring}A {\tt for} loop can loop over anything that is \emph{iterable} such as strings, tuples, lists and dictionaries. Try the following:
+	
+% 	\begin{minted}{python}
+% 	Words = "Hello World"
+% 	for Letter in Words:
+% 	    print(Letter)
+% 	\end{minted}
+	
+% 	Try with some different words.
+% 	}
+% 	\Question{Open and run the {\tt Question2.py} program. What does it do? Research any new functions using {\tt help()}.}
+% 	\Question{In this program the loop is written in the following format:
+%           \begin{minted}{python}
+%             for Value in range(1,11,1):
+%           \end{minted}
+% 	Why do we use the value 11 here? What are the values of the range?
+% 	}
+% 	\Question{In Q\ref{Q:loopstring} we used the string {\tt Words} as the loop iterator. In the previous question we also saw that you can use the function {\tt range()} as a loop iterator. This is a very useful and important function in Python. Call {\tt help()} on {\tt range()} to see how it works. What will be returned by calling {\tt range(1, 11, 2)}?}
+
+        \Question{Create a variable and assign it a string value. Write a loop which now prints both each letter and its position in the string.
+          \textbf{Hint:} The {\tt len()} function returns the length of a string. }        
+	% \Question{Can you write a loop which now prints both each letter and its position in the string {\tt Words}?
+	
+	% \textbf{Hint:} Recall the {\tt len()} function returns the length of a string. 
+	% }
+	% \Question{(*) Research the {\tt enumerate} function. Can you make your answer to the last question less verbose?}
+
+        \Question{Find the mistake(s) in the following program, which is meant to sum the first 10 multiples of 5:
+
+        %   \begin{minted}{python}
+        %     sum = 0
+        %     for i in range(1,10)
+        %     sum = sum + 5 * i
+        %   \end{minted}
+          
+         \vspace{0.5em}
+	     {\tt        
+            total = 0
+            
+            for i in range(1,10)
+            
+            total = total + 5 * i
+          }
+
+          Fix the program so that the final value of {\tt total} is 275, and print the value of {\tt total}.
+          
+        }
+
+        \Question{Compute the factorial of 10. 
+        
+        Recall that the factorial
+          of an integer $n$ is defined as $n! = n \times (n-1) \times (n-2) \times \ldots 2 \times 1$.}
+
+        \Question{Using a {\tt for} loop and the {\tt break} keyword,
+          determine how many positive cubic numbers are less than 2,000.
+          Recall that cubic number is a number of the form $n^3$ where $n$ is an integer.}
+          
+         \Question{ In the game FizzBuzz, we count from 1 to $n$, replacing any multiple of $3$ with the word ``Fizz'' and any multiple of $5$ with the word ``Buzz'' As follows:
+ 	
+ 	%\centering
+ 	\vspace{0.5em}
+	``$1$, $2$, Fizz, $4$, Buzz, Fizz, $7$, $8$, Fizz, Buzz, $11$, Fizz, $13$, $14$, FizzBuzz, $...$''.
+	\vspace{0.5em}
+	
+	\begin{itemize}
+	
+	\item Create two variables {\tt mult3} and {\tt mult5}, setting their values to be the strings {\tt "Fizz"} and {\tt "Buzz"}, respectively.
+	
+	\item Create an additional variable {\tt limit}, which will be the number we count up to.
+	
+	\item At the beginning of your program, after you have assigned {\tt mult3} and {\tt mult5} their values, you will need to ask the user to \textbf{input} a value for {\tt limit}. This can be done using the {\tt input()} function, which waits for the user to input some \emph{string} when you run your program, before continuing.
+	
+	\textbf{Hint:} You will need to \textbf{convert} the input string created by {\tt input()} into an integer, using {\tt int()}.
+	
+	\item The computer should say each number from 1 to {\tt limit}, replacing each multiple of $3$ with the word ``Fizz'' and each multiple of $5$ with ``Buzz''.
+	What kind of \textbf{loop} will you need for this?
+
+	
+	\textbf{Hints:} 
+	
+	\begin{itemize}
+    	\item Start with the basic loop, printing out each number, and then work on replacing it with ``Fizz'', ``Buzz'', or ``FizzBuzz'', in stages.
+    	\item You will also need to use the {\tt \%} operator, which returns the remainder of a division e.g. $4\%3 = 1$ and $15\%3 = 0$, indicating that $15$ is a multiple of $3$. You will need to check whether each number is either a multiple of 3, a multiple of 5, or \emph{both}.
+	\end{itemize}
+	
+	\end{itemize}
+	}
+    
+          
+          
+
+\end{Exercise}
+
+%\newpage
+
+\begin{Exercise}[title=While Loops (Essential)]
+	
+	``While'' loops are used when the number of times the program needs to loop is not known beforehand. The {\tt while} loop checks a condition statement at the beginning of each loop and will carry out the loop as long as this condition is true.
+	\Question{\label{Q:whilestring} Can you finish the {\tt while} loop by replacing the {\tt <?>} in the code below?  
+	
+    \textbf{Note:} {\tt <?>} is used as a placeholder to represent something missing - this is an operation with an outcome of {\tt True} or {\tt False}.  Multiple {\tt <?>} in the same question are not necessarily representing the same thing.
+    	
+% 	\begin{minted}{python}
+% 	Word = "Hello World"
+% 	TargetLetter = <?>
+% 	i = 0
+% 	while <?>:
+% 	    i += <?>
+% 	print("Target letter is at position", i)
+% 	\end{minted}
+
+	\vspace{0.5 em}
+	{\tt
+	word = "Hello World"
+	
+	target\_letter = <?>
+	
+	i = 0
+	
+	while <?>:
+	
+	\qquad i += <?>
+	    
+	print("Target letter is at position", i)
+	
+	}
+	\vspace{0.5 em}
+	
+	
+	Try changing {\tt word} and {\tt target\_letter}. Why do we have to increment the {\tt i}?
+	}
+	\Question{How would you change the code to print all the occurrences of the letter?
+	
+	\textbf{Hint:} What type of loop would be best?}
+	\Question{Finding characters or substrings in a string is very useful and so Python has a built-in function {\tt str.find()}. Test your program is right by comparing with the {\tt str.find()} method for some different target letters and words.
+	
+	(\textbf{Hint:} You may find the {\tt help()} function useful for looking up methods that can be used for different object types. Running {\tt help(str)} will return information on methods that can be used with strings.)}
+	\Question{Open and run the {\tt HowManySquares.py} program. Can you change the code to use the {\tt +=} operator?}
+	\Question{In the {\tt HowManySquares.py} example we do not know when the cumulative sum will exceed $1,000,000$. Therefore, we use a {\tt while} loop until the sum exceeds this limit, and therefore the condition no longer evaluates to {\tt True}. Can you add a line that shows the results for every step of the {\tt while} loop?}
+	\Question{Can you rewrite Q\ref{Q:whilestring} using a {\tt for} loop, an {\tt if} statement and {\tt enumerate()}? \\ \textbf{Hint:} research the {\tt enumerate} function. To get a feel for how this works, run the following code
+        %   \begin{minted}{python}
+        %     s = 'hello'
+        %     enum = enumerate(s)
+        %     print(list(enum))
+        %   \end{minted}
+          \vspace{0.5em}
+          
+          {\tt
+            s = `hello'
+            
+            enum = enumerate(s)
+            
+            print(list(enum))
+          }
+          \vspace{0.5 em}
+        }
+        
+    \Question{Write a program that contains a list of numbers assigned to a variable. Your program should output the mean of the list of numbers for a list of any length.}
+\end{Exercise}
+
+\begin{Exercise}[title=Modelling using Loops (Essential)]
+
+    \Question{Write a program that calculates how many years it would take for the value of a savings account to exceed \pounds 400, if the initial (and only) deposit made is \pounds 100 and the annual interest is 5\%.}
+    
+    \Question{A ball is dropped (initial velocity $u = 0 ms^{-1}$) and falls towards the ground with acceleration due to gravity of $a = 9.81 ms^{-2}$. It is assumed that no other forces act on the ball so the distance travelled by the ball, $d$ (m), at time $t$ (s), can be found by:
+    $$d = ut + \frac{1}{2}at^2$$. Print the distance from the start position the ball has fallen at 0.2 s intervals for 2 s, assuming the ball does not reach the ground within this time.}
+    
+
+
+    
+    \Question{
+    The Fibonacci sequence is a sequence of numbers where each number is the sum of the two preceding ones:
+    $$ f_n = f_{n-1} + f_{n-2} $$
+    The first two numbers in the Fibonacci sequence are 0 and 1:
+    $$f_0 = 0, f_1 = 1$$ 
+    
+    
+    
+    The sequence therefore starts as:
+        \begin{align*}
+          \text{0, 1, 1, 2, 3, 5, 8, ...}
+        \end{align*}
+    (some sources omit the initial 0 and begin the sequence 1, 1 ...)
+    Each number in this sequence is called a Fibonacci number.
+        
+    Fibonacci numbers are used in the analysis of financial markets (e.g. Fibonacci retracement) and computer algorithms (e.g. Fibonacci search technique, Fibonacci heap data structure) and is found in the patterning of many biological systems (e.g. Nautilus shells, sunflowers and pine cones).
+    
+    \begin{enumerate}[label=(\Alph*)]
+        \item Write a program that finds and prints the first 10 Fibonacci numbers. 
+        % \\ {\it Hints:} \\
+        % Start by defining the first two Fibonacci numbers, 0 and 1. \\ Re-assign the values of $f_{n-1}$ and $f_{n-2}$ each time your code loops.
+        \item How many Fibonacci numbers are less than (i) 100, (ii) 1,000, (iii) 10,000?
+    \end{enumerate}
+    
+       
+    
+    }
+    
+    \Question{A prime number is a natural number greater than 1 that is not a product of two smaller natural numbers. In other words, a prime number cannot be written as a product of two natural numbers that are both smaller than it. Write a program that prints all prime numbers between 1 and 150. \\ {\it Hints:}\\
+    Remember the modulo operato, {\tt \%}, gives the remainder when one number is divided by another. \\
+    Use two nested loops to cycle through each value, then cycle through the series of possible factors. 
+    }
+
+
+
+
+    
+
+\end{Exercise}
+
+\begin{Exercise}[title=More Loops (Advanced)]
+
+  Use loops and conditionals to solve the following problems:
+
+  \Question{Use two {\tt for} loops to compute the double sum
+    \begin{align*}
+      S = \sum_{i = 1}^{10} \sum_{j = 0}^{5} j^2(i + j)
+    \end{align*}
+  }
+  
+  \Question{Write a program to print the following star pattern:
+    
+    \vspace{0.5em}
+    {\tt
+    
+    *
+    
+    **
+    
+    ***
+    
+    ****
+    
+    *****
+    
+    ****
+    
+    ***
+    
+    **
+    
+    *
+    }
+    
+    }
+
+  
+  \Question{The value of $\pi$ can be approximated using the Leibniz formula:
+    \begin{align*}
+      \pi_N = \sum_{n = 0}^{N} \frac{8}{(4n+1)(4n+3)}
+    \end{align*}
+    where $N$ is a large number. Taking the limit as $N \to \infty$
+    produces the exact value of $\pi$, but this requires evaluating an infinite
+    number of terms, which is impossible on a computer. Therefore, we can
+    only approximate the value of $\pi$ by using a finite number of terms
+    in the sum. Use this formula to compute approximations to $\pi$
+    by taking $N = 100$, $N = 1,000$, and $N = 10,000$. 
+    % Given that % $\pi = 3.141592653589793...$, what is the error in the approximation
+    % in each of these cases?
+    % Note that the error is defined as $|\pi - \pi_N|$. The function {\tt abs}
+    % can be used to compute the absolute value in Python.
+    % What value of $N$ is needed to ensure an error that is less than $10^{-6}$?    
+  }
+
+    % \Question{The Fibonacci sequence is a sequence of numbers where each number
+    %   is the sum of the two preceding ones. The first two
+    %   numbers in the Fibonacci sequence are 0 and 1.
+    %   The sequence therefore starts as:
+    % \begin{align*}
+    %   \text{0, 1, 1, 2, 3, 5, 8, ...}
+    % \end{align*}
+    % Each number in this sequence is called a Fibonacci number.
+    % }
+    
+    
+% 	\Question{Write a program that assigns two variables, say {\tt a} and {\tt b}, to the throws of two random dice. Your program should keep reassigning dice throws to {\tt a} and {\tt b} until {\tt a == b}. Then, create another variable to count the number of times the program assigns {\tt a} and {\tt b} random values until both numbers are equal. When this happens, print out a success message and the number of assignments it took for {\tt a == b}.
+	
+% 	\textbf{Hint:} Recall you replicated dice throws for an exercise in Week 1.}
+%     \Question{Implement the ``Number Guessing Game'', which works in the following way:
+%     \begin{itemize}
+%         \item Pick a random number between 1 and 100.
+%         \item Ask the user to guess the number using the {\tt input()} function.
+%         \item Tell the user if they are correct and stop the program. If they are incorrect, tell them whether their guess is too low or too high.
+%         \item Repeat until the user has guessed correctly.
+%         \item Congratulate the user on guessing the number and tell them how many guesses it took them.
+%     \end{itemize}
+% 	What about when the user guesses a number out of range? Add a check to your program to instruct the user to enter a guess within the accepted range.}  
+\end{Exercise}
+
+%\pagebreak
+
+\subsection*{\Large Part 2. Data structures}
+
+\begin{Exercise}[title=Lists (Essential)]
+	\Question{Make two lists containing the values {\tt [1,2]} and {\tt [3,4]}.}
+	\Question{Change the value 1 to the value 5.}
+% 	\Question{Sort the lists.
+	
+% 	\textbf{Hint:} Have a look at {\tt help(list)}.}
+	\Question{Make a nested list that contains both lists.}
+	\Question{Use two loops to print out all the values in the nested list (2x2 matrix) one by one.}
+	\Question{Write a program that asks the user to input a list of 10 words (strings) and then creates a list containing the length of each word. Print out each word and word length, like so:
+	
+	\vspace{0.5em}
+	{\tt Word: Algorithm - Word length: 9}
+	\vspace{0.5em}
+	
+	\textbf{Hint:} You can read all $10$ words at a time, as one large string, and use the {\tt .split()} method on the string. The output will be a list of words as individual strings. Loop through the resulting list of words and print out the length of each word.}
+	\Question{
+% 	List comprehension is an elegant way to produce lists using loops and conditional statements. Read how to do this here: \url{https://www.pythonforbeginners.com/basics/list-comprehensions-in-python}
+	
+	Using list comprehension, create lists of the following between 0 and 100:
+	\begin{itemize}
+	    \item odd numbers
+	    \item multiples of 3
+	    \item prime numbers (NB: this is quite tricky and can be considered
+              an advanced question)
+	\end{itemize}
+	}
+\end{Exercise}
+
+\begin{Exercise}[title=Tuples (Essential)]
+% 	\Question{Have a look at {\tt help(tuple)}.}
+	\Question{Make a tuple named {\tt fondue\_ingredients} containing the values ``gruyere'' and ``vacherin''.}
+	\Question{Print all the items in the tuple.}
+	\Question{Change the value ``gruyere'' to the value ``cheddar''. Does it work? Why?
+	
+	\textbf{Note:} Fondue recipes are sacred.}
+	\Question{Is there a function to remove the last item of the tuple? How else could you do it?}
+\end{Exercise}
+
+\begin{Exercise}[title=Sets (Essential)]
+% 	\Question{Have a look at {\tt help(set)}.}
+	\Question{Make two set {\tt s1 = \{1,2,5,5,8\}} and {\tt s2 = \{1,2,4,9,2\}}. Print out the sets, are there any duplicates?}
+	\Question{Can you access an element of the set based on index e.g. {\tt s1[2]}?}
+	\Question{Use the keyword in to check if 4 is in both sets.}
+	\Question{Use the operators {\tt \&}, {\tt |}, {\tt -}, {\tt \^{}}. What do they do?}
+	\Question{Remove the value 1 from the first set, and add the value 6.}
+\end{Exercise}
+
+\begin{Exercise}[title=Dictionaries (Essential)]
+% 	\Question{Have a look at {\tt help(dict)}.}
+	\Question{Make a dictionary that contains {\tt \{"Xiaohan":21, "Christian”:20, "Grace”:20, "Sajid”:21\}}. Remember to give it a sensible name}
+	\Question{Print out all the keys in the dictionary. 
+	%Use {\tt help(dict)} to work out how to do this.
+	}
+	\Question{Add the item {\tt "Nicola":19} to the dictionary.}
+	\Question{Remove the item {\tt Grace"}.}
+	\Question{Add the item {\tt "Sajid":22} to the dictionary. Are there two instances of Sajid now?}
+	\Question{Check if {\tt "Harry"} is in the dictionary.}
+\end{Exercise}
+
+
+\begin{Exercise}[title=Modelling using data structures (Essential)]
+    
+    Table \ref{tab:planets} shows some data about the planets in our solar system. The mass of each planet is shown as a factor which when multiplied by the mass of Earth gives the actual mass of the planet in kg. The mass of Earth can be estimated as $5.9722 \times 10^{24}$ kg. The rotation period is given in units of days (d) or hours (h). 
+    \begin{table}
+    \begin{center}
+    \begin{tabular}{ |l|c|c|c| } 
+     \hline
+     Planet  & Diameter (km) & Mass  & Rotation period (h)\\ 
+     \hline
+     Mercury & 4,878           & 0.06  & 58.65 \\ 
+     Venus   & 12,100          & 0.82  & 243 \\  
+     Earth   & 12,756          & 1.00  & 23.934 \\ 
+     Mars    & 6,794          & 0.11  & 24.623 \\ 
+     Jupiter & 142,800          & 317.89& 9.842  \\ 
+     Saturn  & 120,000          & 95.17 & 10.233 \\ 
+     Uranus  & 52,400          & 14.56 & 16 \\ 
+     Neptune & 48,400          & 17.24 & 18 \\ 
+     Pluto   & 2,445          & 0.002 & 6.39 \\ 
+     \hline
+    \end{tabular}
+    \vspace{0.5em}
+    
+    \caption{\label{tab:planets} Planet data taken from: https://www.rmg.co.uk/stories/topics/solar-system-data}
+    \end{center}
+    \end{table}
+    
+    % https://www.rmg.co.uk/stories/topics/solar-system-data
+    
+    % \Question{Write a program that identifies and prints the name and density $\rho$ (in kg m$^{-3}$) of the planet with the lowest density. Density, $\rho = \frac{m}{v}$, where $m$ = mass and $v$ = volume. Assume each planet is a perfect sphere}
+    
+    \Question{Write a program that identifies and outputs the names and rotation periods of planets with a rotation period shorter than Earth's.}
+\end{Exercise}
+
+
+\begin{Exercise}[title=More data structures (Advanced)]
+
+%  	\Question{ In the game FizzBuzz, we count from 1 to $n$, replacing any multiple of $3$ with the word ``Fizz'' and any multiple of $5$ with the word ``Buzz'' As follows:
+ 	
+%  	%\centering
+%  	\vspace{0.5em}
+% 	``$1$, $2$, Fizz, $4$, Buzz, Fizz, $7$, $8$, Fizz, Buzz, $11$, Fizz, $13$, $14$, FizzBuzz, $...$''.
+% 	\vspace{0.5em}
+	
+% 	\begin{itemize}
+	
+% 	\item Create two variables {\tt mult3} and {\tt mult5}, setting their values to be the strings {\tt "Fizz"} and {\tt "Buzz"}, respectively.
+	
+% 	\item Create an additional variable {\tt limit}, which will be the number we count up to.
+	
+% 	\item At the beginning of your program, after you have assigned {\tt mult3} and {\tt mult5} their values, you will need to ask the user to \textbf{input} a value for {\tt limit}. This can be done using the {\tt input()} function, which waits for the user to input some \emph{string} when you run your program, before continuing.
+	
+% 	\textbf{Hint:} You will need to \textbf{convert} the input string created by {\tt input()} into an integer, using {\tt int()}.
+	
+% 	\item The computer should say each number from 1 to {\tt limit}, replacing each multiple of $3$ with the word ``Fizz'' and each multiple of $5$ with ``Buzz''.
+% 	What kind of \textbf{loop} will you need for this?
+
+	
+% 	\textbf{Hints:} 
+	
+% 	\begin{itemize}
+%     	\item Start with the basic loop, printing out each number, and then work on replacing it with ``Fizz'', ``Buzz'', or ``FizzBuzz'', in stages.
+%     	\item You will also need to use the {\tt \%} operator, which returns the remainder of a division e.g. $4\%3 = 1$ and $15\%3 = 0$, indicating that $15$ is a multiple of $3$. You will need to check whether each number is either a multiple of 3, a multiple of 5, or \emph{both}.
+% 	\end{itemize}
+	
+% 	\end{itemize}
+% 	}
+	
+	\Question{Create a list of numbers and research how to sort the list so the numbers are in ascending order. 
+	
+	Can you, instead output a list with the numbers sorted in descending order?
+	
+	
+	}
+	
+	
+\end{Exercise}
+
+
+\end{document}

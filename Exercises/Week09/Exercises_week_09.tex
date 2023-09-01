@@ -1,0 +1,213 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Header
+\documentclass[11pt]{report}
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{fullpage}
+\usepackage{nicefrac}
+\usepackage[lastexercise]{exercise}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{amsmath}
+
+
+\usepackage{minted}
+\makeatletter
+\AtBeginEnvironment{minted}{\dontdofcolorbox}
+\def\dontdofcolorbox{\renewcommand\fcolorbox[4][]{##4}}
+\makeatother
+
+
+\setlength{\parindent}{0cm}
+
+\renewcommand{\ExerciseHeader}{\large\textbf{\ExerciseName~\ExerciseHeaderNB} - \textbf{\ExerciseTitle}\medskip}
+
+\renewcommand{\ExePartHeader}{\medskip\textbf{\ExePartName\ExePartHeaderNB\ExePartHeaderTitle\medskip}}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection*{Introduction to Computer Programming}
+\subsection*{\Large Exercises -- Week 9. NumPy}
+
+
+\begin{Exercise}[title=Creating arrays and accessing elements (Essential)]
+
+  \Question{Create a variable $a$ that stores the array
+    [5, 4, 9, 2, 0, 4, 7, 2].}
+
+  \Question{Print the first entry of $a$ and the last entry of $a$
+    (\textbf{Hint}: You can use the index $-1$ to access the last entry
+    of an array). The colon operator $:$ can be used to access
+    sequential elements of an array. Print the values of
+    {\tt a[1:6]} and explain the output.}
+
+  \Question{Change the last entry of $a$ to $-9$ and print the result.
+    Now run the command {\tt a[0:3] = 1} and print the result. How has this
+    altered the array $a$?}
+
+  \Question{Create an array $r$ that contains 20 random integers between
+    $1$ and $9$ (inclusive). Print the result. This array will be used in the
+    next question.}
+
+  \Question{(Advanced) \textbf{Logical indexing} provides a quick way to access and modify
+    entries in an array that satisfy certain criteria. In this question, we'll use
+    logical indexing to replace all of the entries in $r$ that
+    are smaller than 5 with 0. First, run the command {\tt idx = r < 5}.
+    Print the value of {\tt idx}. Explain the result you see. 
+    Now run the command {\tt r[idx] = 0} and print the value of $r$.
+    What has happened?}
+
+  \Question{Create a variable $A$ to store the matrix
+    \begin{align}
+    \begin{pmatrix}
+      6 & 2 & 3 \\ 4 & 4 & 1 \\ 8 & 5 & 6
+    \end{pmatrix}
+    \end{align}
+    as a NumPy array.
+  }
+
+  \Question{Change the entry in the second row, first column of $A$ to 9. Then
+    change the entry in the last row and last column of $A$ to 0. Print the
+    updated array $A$. The $n$-th row of $A$ can be accessed using the colon
+    operator as {\tt A[n-1,:]}. Similarly, the $m$-th column of $A$ can be
+    accessed using {\tt A[:,m-1]}. Use the colon operator to print the entries
+    in the second row of $A$.}
+
+  \Question{Create a $2 \times 2$ array of zeros and assign it to a variable $A$. 
+    Use the colon
+    operator to set the first row of $A$ to 1 and the second row of $A$ to 2.
+    \textbf{Hint}: The operation {\tt A[n-1,:]~=~q} will set all of the entries in
+    the $n$-th row of $A$ to the value $q$.
+    Using a {\tt for} loop, create a $5 \times 5$ matrix where the entries in
+    row $i$ are equal to $i$.}
+  
+\end{Exercise}
+
+
+\begin{Exercise}[title=Performing operations on NumPy arrays (Essential)]
+
+  \Question{Create two NumPy arrays to store the vectors
+    $a = (3, 5, 2)$ and $b = (6, 3, 1)$. Calculate
+    $c = a + 2b$. Calculate the dot product $a \cdot b$ using
+    the {\tt dot} method or the {\tt dot} function.
+    Can you also compute the dot product using
+    element-by-element multiplication along with the {\tt np.sum}
+    function? Recall that the dot product
+    is defined as $a\cdot b = \sum_{i} a_i b_i$.}
+
+  \Question{Create an array called $t$ that contains 500 values between
+    0 and 5. Create a
+    second array called $y$ that stores the values of $y = t^2 e^{-2 t}$.
+    \textbf{Hint}: use the {\tt exp} function to compute the exponential
+    of a NumPy array. Find the maximum value of $y$. \textbf{Note}: this is
+    a simple way of finding the maximum of a function. 
+    (Advanced): Use logical indexing or otherwise to find the value of $t$ at
+    which $y$ is maximal.}
+
+  \Question{This question will demonstrate that NumPy can be used to integrate
+    functions. Create a NumPy array $x$ that stores 50 values between 0 and 5.
+    Create the array $y = x / (x + 1)$. Look up how to use NumPy's {\tt trapz}
+    function, which uses the trapezoid rule to approximate integrals.
+    Use {\tt trapz} to compute $I = \int_{0}^{5} y(x)\, dx$. 
+	The exact value is $I = 5 - \ln(6) = 3.208240530...$
+	What happens
+    if you repeat the calculation using 500 points between $0$ and $5$?}
+
+  \Question{The table below provides the gravitational acceleration $g$ of each
+    of the planets:
+    \begin{table}[hp!]
+      \centering
+      \begin{tabular}{c|c}
+        Planet & $g$ [m/s$^2$] \\ \hline
+        Mercury & 3.7 \\
+        Venus & 8.9 \\
+        Earth & 9.8 \\
+        Mars & 3.7 \\
+        Jupiter & 25\\
+        Saturn & 10\\
+        Uranus & 8.9\\
+        Neptune & 11\\
+      \end{tabular}
+    \end{table}
+    \\
+    Use NumPy functions to compute the maximum, minimum, mean, and median values of $g$.}
+
+  \Question{Create NumPy arrays to store the matrices
+    \begin{align}
+      A = \begin{pmatrix}
+        1 & 2 & 3 \\ 3 & 2 & 1 \\ 2 & 4 & 6
+      \end{pmatrix},
+                                          \quad
+                                          B = \begin{pmatrix}
+                                            1 & 5 & 0 \\ 0 & 1 & 1 \\ 4 & 3 & 1
+                                          \end{pmatrix}
+    \end{align}
+    Calculate $C = A + 2B$. Then compute $AB$ and $BA$. You should notice that
+    $AB \neq BA$.
+  }
+
+  \Question{A common operation to perform on matrices is to turn the rows into
+    columns and the columns into rows. This is called transposing the matrix.
+    Use the function {\tt transpose} to compute the transpose of $A$ and
+    print the result.}
+
+  \Question{Solve the linear system of equations $Ax = b$ where
+    \begin{align}
+      A = \begin{pmatrix}
+        1 & 0 & 0 & -1 \\
+        1 & -2 & 1 & 0 \\
+        0 & 1 & -2 & 1 \\
+        2 & 0 & 0 & 1
+      \end{pmatrix},
+                    \quad
+                    b = \begin{pmatrix}
+                      0 \\ 1 \\ 1 \\ 2
+                    \end{pmatrix}
+    \end{align}
+    Print the array $x$. Then compute $Ax - b$ and print the result.
+  }
+  
+\end{Exercise}
+
+
+\begin{Exercise}[title=Weather prediction (Essential)]
+
+  In this example we'll use a \textbf{Markov chain} to create a simple
+  model for weather prediction. To start, we will assume that there are
+  three states of weather: sunny, cloudy, and rainy. We
+  will use the state vector $x = (x_0, x_1, x_2)$ to describe the probabilities
+  of the weather being sunny ($x_0$), cloudy ($x_1$), or rainy ($x_2$).
+  We use a transition matrix $P$ to describe how the weather changes from one
+  day to the next. The entries of the transition matrix, $P_{i,j}$, describe
+  the probability of going from state $i$ to state $j$. For this problem,
+  we will assume that
+  \begin{align}
+    P = \begin{pmatrix}
+      0.5 & 0.3 & 0.2 \\
+      0.4 & 0.2 & 0.4 \\
+      0.6 & 0.2 & 0.2
+    \end{pmatrix}
+  \end{align}
+  The entry $P_{1,1} = 0.5$ means there is a 50\% chance that if a day is sunny,
+  then the next day will be sunny. Similarly, $P_{3,1} = 0.6$ means there is a
+  60\% chance that if a day is rainy, then the next day will be sunny.
+  
+  \Question{Suppose that today is sunny. Then we can write the state vector
+    as $x^{(0)} = (1, 0, 0)$. The weather tomorrow can be predicted by
+    computing
+    the product $x^{(1)} =  x^{(0)} P$.
+    What is the probability that tomorrow will be sunny?}
+
+  \Question{The product $x^{(2)} = x^{(1)} P = x^{(0)} P^2$
+    can be used to predict the weather
+    in two days. What is the probability that it will rain in two days?}
+
+  \Question{Provide a prediction of the weather for seven days from now. That is,
+    compute $x^{(7)}$.}
+
+\end{Exercise}
+
+
+\end{document}

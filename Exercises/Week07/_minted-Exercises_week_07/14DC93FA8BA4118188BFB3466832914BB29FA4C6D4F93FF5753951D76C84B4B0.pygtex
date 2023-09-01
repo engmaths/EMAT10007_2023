@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+      \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{Description}\PYG{p}{,} \PYG{n}{Number}\PYG{p}{,} \PYG{n}{UnitPrice}\PYG{p}{)}
+\end{Verbatim}
