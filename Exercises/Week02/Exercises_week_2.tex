@@ -27,46 +27,77 @@
 
 \noindent\fbox{%
     \parbox{\textwidth}{%
-        \subsection*{Getting Started: How to open software}
-        \subsubsection*{PyCharm IDE (Integrated Development Environment)}
-        \begin{itemize}
-            \item{Open PyCharm on a Linux lab computer}
+        \subsection*{Getting Started: Pycharm IDE}
+        \subsubsection*{Open PyCharm on linux lab computers}
             \begin{itemize}
-                \item{Click on Activities in the top left corner of the screen.}
-                \item{Open 'Terminal' from the menu tab.}
+                \item{Scroll down to bring up log in screen and log in with your UoB user name and password.}
+                \item{Click activities (top left corner) to bring up the side panel.}
+                \item{Click the grid of 9 dots to bring up applications.}
+                \item{Choose JetBrains PyCharm}
+                \item{When prompted about the user agreement click accept and read}            
             \end{itemize}
-            \item{To instead install PyCharm on your personal computer}
-            \begin{itemize}
-                \item{Click on Activities in the top left corner of the screen.}
-                \item{Open 'Terminal' from the menu tab.}
-                \item{Type or copy and paste the following:}
-    	    \item{Press enter}
-            \end{itemize}
-        \end{itemize}
-        \subsubsection*{Online code editors}
-        \begin{itemize}
-            \item{Open 'Terminal' from the menu tab.}
-            \item{Type or copy and paste the following:}
-        \end{itemize}
     }        
 }%
 
-\vspace{15}
+\vspace{0.5em}
 
 \noindent\fbox{%
     \parbox{\textwidth}{%
-        \subsection*{Getting Started: How to save your work}
-        \subsubsection*{PyCharm IDE}
-        \begin{itemize}
-            \item{Open 'Terminal' from the menu tab.}
-        \end{itemize}
-        \subsubsection*{Online code editors}
-        \begin{itemize}
-            \item{Open 'Terminal' from the menu tab.}
-        \end{itemize}
+        \subsection*{Create a new project and Python file}
+            \begin{itemize}
+                \item{Click New project or File $>>$ New project $>>$ Pure python}
+                \item{Unselect 'Create a main.py welcome script'}
+    	    \item{Note the file location:\\ /home/{\bf UoB\_username}/PycharmProjects/{\bf your\_projectname}/venv \\ where {\bf UoB\_username} is your UoB username and rename {\bf your\_projectname} to be a name of your choice e.g. EMAT10007\_exercises} 
+                \item{Right click on the folder icon with project name next to it (top left of window).}
+                \item{Choose new $>>$ python file}
+                \item{Give your file a name e.g. week\_1\_exercises.py}
+            \end{itemize}
+    }        
+}%
+            
+\vspace{0.5em}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+        \subsection*{Write and run code}
+        Type some code and click the green play arrow at the top to run.
+
+        \subsubsection*{Save your project}
+        File $>>$ Save all to save your wor
+    
+        \subsubsection*{Open a project you created previously}
+        Click File $>>$ Open $>>$ /home/{\bf UoB\_username}/PycharmProjects/{\bf your\_projectname}/venv, Open $>>$ New window 
     }        
 }%
 
+
+\vspace{0.5em}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+        \subsection*{Rules for naming variables}
+	\begin{itemize}
+            \item Variable names may contain letters or numbers
+            \item Variable names must begin with a letter
+            \item Variable names are case sensitive ({\tt time} is not the same as {\tt Time})		
+            \item Some {\tt keywords} are reserved by the Python language and cannot be used as variable names. For a full list of keywords reserved by Python, enter the following run the following comand in the editor you are using:
+            
+    		\vspace{0.5em}
+    		{\tt help("keywords")}
+    		\vspace{0.5em}
+    		
+    	\item{Use a consistent naming convention:
+            \begin{itemize}
+                \item {\tt snake\_case}: lower case letters, words separated by underscore ({\tt \_})
+                \item {\tt camel\_Case}: first letter of each word capitalised, excluding first word
+                \item {\tt Pascal\_Case}: first letter of each word capitalised
+            \end{itemize}
+            }
+    \end{itemize}
+    }        
+}%
+
+\vspace{0.5em}
 
 \begin{Exercise}[title=Conditional Statements]  \label{Ex:ControlFlow}
     \Question{Create a variable, a, and assign it a string value. Use an {\tt if} statement to test if the final character of the string is the letter e}
