@@ -1,14 +1,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Header
-\documentclass[12pt]{article}
+\documentclass[11pt]{report}
 \usepackage[english]{babel}
 \usepackage[utf8x]{inputenc}
-\usepackage{hyperref}
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage{fullpage}
+\usepackage{nicefrac}
 \usepackage[lastexercise]{exercise}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{listings}
 \usepackage{enumitem}
-\graphicspath{{./weekly_content/img/}}
+\graphicspath{ {./weekly_content/img/} }
 
 \setlength{\parindent}{0cm}
 
@@ -18,53 +21,57 @@
 
 \begin{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\title{Exercises -- Week 1: Introduction to Python}
+\title{Exercises -- Week 2: \\Control Structures: Conditional Statements}
 \subsubsection*{EMAT10007 -- Introduction to Computer Programming}
-\subsection*{\Large Exercises -- Week 1. \\ Objects, Variables and Operators}
+\subsection*{\Large Exercises -- Week 2: \\Control Structures: Conditional Statements}
 
 \noindent\fbox{%
     \parbox{\textwidth}{%
-        \subsection*{Getting Started: How to open software}
-        \subsubsection*{PyCharm IDE (Integrated Development Environment)}
-        \begin{itemize}
-            \item{Open PyCharm on a Linux lab computer}
+        \subsection*{Getting Started: Pycharm IDE}
+        \subsubsection*{Open PyCharm on linux lab computers}
             \begin{itemize}
-                \item{Click on Activities in the top left corner of the screen.}
-                \item{Open 'Terminal' from the menu tab.}
+                \item{Scroll down to bring up log in screen and log in with your UoB user name and password.}
+                \item{Click activities (top left corner) to bring up the side panel.}
+                \item{Click the grid of 9 dots to bring up applications.}
+                \item{Choose JetBrains PyCharm}
+                \item{When prompted about the user agreement click accept and read}            
             \end{itemize}
-            \item{To instead install PyCharm on your personal computer}
-            \begin{itemize}
-                \item{Click on Activities in the top left corner of the screen.}
-                \item{Open 'Terminal' from the menu tab.}
-                \item{Type or copy and paste the following:}
-    	    \item{Press enter}
-            \end{itemize}
-        \end{itemize}
-        \subsubsection*{Online code editors}
-        \begin{itemize}
-            \item{Open 'Terminal' from the menu tab.}
-            \item{Type or copy and paste the following:}
-        \end{itemize}
     }        
 }%
 
-\vspace{15}
+\vspace{0.5em}
 
 \noindent\fbox{%
     \parbox{\textwidth}{%
-        \subsection*{Getting Started: How to save your work}
-        \subsubsection*{PyCharm IDE}
-        \begin{itemize}
-            \item{Open 'Terminal' from the menu tab.}
-        \end{itemize}
-        \subsubsection*{Online code editors}
-        \begin{itemize}
-            \item{Open 'Terminal' from the menu tab.}
-        \end{itemize}
+        \subsection*{Create a new project and Python file}
+            \begin{itemize}
+                \item{Click New project or File $>>$ New project $>>$ Pure python}
+                \item{Unselect 'Create a main.py welcome script'}
+    	    \item{Note the file location:\\ /home/{\bf UoB\_username}/PycharmProjects/{\bf your\_projectname}/venv \\ where {\bf UoB\_username} is your UoB username and rename {\bf your\_projectname} to be a name of your choice e.g. EMAT10007\_exercises} 
+                \item{Right click on the folder icon with project name next to it (top left of window).}
+                \item{Choose new $>>$ python file}
+                \item{Give your file a name e.g. week\_1\_exercises.py}
+            \end{itemize}
+    }        
+}%
+            
+\vspace{0.5em}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+        \subsection*{Write and run code}
+        Type some code and click the green play arrow at the top to run.
+
+        \subsubsection*{Save your project}
+        File $>>$ Save all to save your wor
+    
+        \subsubsection*{Open a project you created previously}
+        Click File $>>$ Open $>>$ /home/{\bf UoB\_username}/PycharmProjects/{\bf your\_projectname}/venv, Open $>>$ New window 
     }        
 }%
 
-\vspace{15}
+
+\vspace{0.5em}
 
 \noindent\fbox{%
     \parbox{\textwidth}{%
@@ -90,10 +97,9 @@
     }        
 }%
 
+\vspace{0.5em}
 
-
-\begin{Exercise}[title=Objects and Variables]  \label{Ex:Numbers}
-% \ExeText{Python can be used as a calculator. You can input operations, and store the results of operations as variables for use in additional calculations.}
+\begin{Exercise}[title=Objects and Variables]\label{Ex:Numbers}
     \Question{Create two variables, a and b and assign an integer value to each variable. Calculate the product of a and b and print the result.}
     \Question{Create two variables, c and d and assign a floating point value to each variable. Calculate the difference between c and d and store the result as a new variable, e. Print e.}
     \Question{Overwrite the value of the new variable you just created with the value $\frac{a+b}{3}$.
@@ -106,17 +112,19 @@
         \Question{Create two variables, g and h and assign a string value to each variable. Connect the two strings using the addition (+) operator. Can you work out how to separate the two strings with a space when connecting them? }.
     \end{Exercise}
 
-\begin{Exercise}[title=Arithmetic Operators] \label{Ex:Strings}
+\begin{Exercise}[title=Arithmetic and Assignment Operators] \label{Ex:Strings}
+    \Question{Create a variable, a, with a numerical value. Reassign the value of a so it is 3 times its original value.}
     \Question{Write a program that finds the volume ($V$) of a sphere with diameter 30cm, then displays the value with the correct units.\\ Volume of a sphere: $$V = \frac{4}{3}\pi r^2$$  \\ $r = $ radius. Assume $\pi = $ 3.142}
     \Question{Find the Euclidean distance, $d$ between two points with 3-dimensional position vectors ${\mathbf{a} = [5.0, 4.5, 2.0]$ and ${\mathbf{b} = [10.6, 11.5, 6.2]$ using $$d = \sqrt{(x_a - x_b)^2 + (y_a - y_b)^2 + (z_a - z_b)^2}$$}
     % \Question{Modular arithmetic is a system for integers, where numbers "wrap around" when reaching a certain value called the modulus. For example, for example adding 4 hours to 9 o'clock gives 1 o'clock. \\ Consider the hours on a clock. The modulus ($mod$) is the number of hours = 12. The minimum value ($min$) is 1. The new time $t_1$, given the current time, $t_0$, and the number of hours shifted $n$ can be found by: $$t_1 = (t_0 - min + (n \% mod) + n ) \% n + min$$. Use this expression }
 \end{Exercise}
 
-\begin{Exercise}[title=Comparison Operators]  
+\begin{Exercise}[title=Comparison and Identity Operators]  
 
 \ExeText{Create three variables x=1.2, y=3.3 and z = 4.0.}
     \Question{Write an expression to test if x is greater than or equal to y}
     \Question{Write an expression to test if x multiplied by 3 is less than y}
+    \Question{Write an expression to test if the object type and value of x is the same as y}
     \Question{Write an expression to test if x is less than y, and y is less than z}
     \Question{Write an expression to test if y is less than both x and z}
     \Question{Write an expression to test if the sum of x and 2.1 is equal to y}
@@ -150,9 +158,6 @@
     \Question{Write an expression to test if the point is in region E}
     \Question{Combine these statements in a different order to minimise the number of times you need to code each comparison explicitly.}
 \end{Exercise}
-
-
-
 
 
 \end{document}
