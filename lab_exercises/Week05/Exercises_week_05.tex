@@ -13,7 +13,7 @@
 \usepackage{enumitem}
 
 
-% \usepackage{minted}
+ \usepackage{minted}
 \makeatletter
 \AtBeginEnvironment{minted}{\dontdofcolorbox}
 \def\dontdofcolorbox{\renewcommand\fcolorbox[4][]{##4}}
@@ -142,11 +142,26 @@
 
 \end{Exercise}
   
-\begin{Exercise}[title=Tuples]
+\begin{Exercise}[title=Tuples and dictionaries]
   \Question{Make a tuple named  \verb+fondue_ingredient+
     containing the values ``gruyere'' and ``vacherin''.}
   \Question{Print all the items in the tuple.}
   \Question{Change the value ``gruyere'' to the value ``cheddar''. Does it work? Why?}
+  \Question{Consider the colours red, blue, green, black, and white.  Their RBG values are
+  (1,0,0), (0,1,0), (0,0,1), (0,0,0), (1,1,1), respectively.  Create a dictionary called
+  \verb+colours+ that stores the name of the colours as keys and the RGB values as values.}
+  \Question{Using the \verb+colours+ dictionary, run the following code
+  	\begin{minted}{python}
+  	for v in colours:
+  	    print(v)
+	\end{minted}
+	Are the keys or values printed to the screen?  Now try running the code
+	\begin{minted}{python}
+  	for v in colours.values():
+  	    print(v)
+	\end{minted}
+	What happens in this case?  
+	}
 \end{Exercise}
 
 
